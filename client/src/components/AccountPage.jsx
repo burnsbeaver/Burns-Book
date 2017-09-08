@@ -4,7 +4,7 @@ class AccountPage extends Component {
   render () {
     return (
       <div>
-        Hello World
+        Hello, {this.props.user.nickname}
       </div>
     )
   }

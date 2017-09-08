@@ -3,7 +3,6 @@ import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import { setAxiosHeaders } from '../util';
 
-
 class UserRegistration extends Component {
  constructor(){
    super();
@@ -23,8 +22,10 @@ class UserRegistration extends Component {
      password_confirmation: this.state.password_confirmation
    }
    const response = await axios.post('/auth', payload);
+   console.log(response)
    setAxiosHeaders(response.headers);
    this.setState({redirect: true})
+   this.props.setuser(response.data.data)
  }
 
 
@@ -36,7 +37,7 @@ class UserRegistration extends Component {
 
  render() {
    if (this.state.redirect){
-     return <Redirect to="/user/:userID" />
+     return <Redirect to="/account" />
    }
    return (
      <div>
@@ -55,7 +56,6 @@ class UserRegistration extends Component {
          </div>
 
          <button>Sign Up</button>
-         <Link to="/signin">Sign In</Link>
        </form>
      </div>
    );

@@ -14,15 +14,18 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      user: {},
+      user: {}
     }
   }
 
   componentWillMount () {
     setAxiosDefaults();
   }
-  
-
+  _setUserState = (returnedUser) => {
+    const newState = {...this.state}
+    newState.user = returnedUser
+    this.setState(newState)
+  }
 
   render() {
     return (
@@ -30,9 +33,18 @@ class App extends Component {
         <div className="App">
           <NavBar />
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/user/:userID" component={AccountPage}/>
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/signUp" component={UserRegistration} />
+          <Route exact path="/signin" render= {routeProps =>
+              <SignIn {...routeProps}
+                setuser={this._setUserState}
+            />}/>
+          <Route exact path="/signup" render= {routeProps =>
+              <UserRegistration {...routeProps}
+                setuser={this._setUserState}
+            />}/>
+          <Route exact path="/account" render= {routeProps =>
+              <AccountPage {...routeProps}
+                user={this.state.user}
+            />}/>
         </div>
       </Router>
     );

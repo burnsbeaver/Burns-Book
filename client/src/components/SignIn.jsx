@@ -21,7 +21,9 @@ _signIn = async (e) => {
   }
   const response = await axios.post('/auth/sign_in', payload);
   setAxiosHeaders(response.headers);
+  console.log(response)
   this.setState({redirect: true})
+  this.props.setuser(response.data.data)
 }
 
 
@@ -34,7 +36,7 @@ _signIn = async (e) => {
 
  render() {
    if (this.state.redirect){
-     return <Redirect to="/user/:userID" />
+     return <Redirect to="/account" />
    }
    return (
      <div>
@@ -48,7 +50,6 @@ _signIn = async (e) => {
            <input onChange={this._handleChange} type="text" name="password" value={this.state.password} />
          </div>
          <button>Sign In</button>
-         <Link to="/signup">Sign Up</Link>
        </form>
      </div>
    );
