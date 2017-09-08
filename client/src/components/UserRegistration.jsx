@@ -27,10 +27,6 @@ class UserRegistration extends Component {
    this.setState({redirect: true})
  }
 
- _signIn = (e) => {
-   e.preventDefault();
-   this.setState({redirect: true})
- }
 
  _handleChange = (e) => {
    const newState = {...this.state};
@@ -40,7 +36,7 @@ class UserRegistration extends Component {
 
  render() {
    if (this.state.redirect){
-     return <Redirect to="/" />
+     return <Redirect to="/user/:userID" />
    }
    return (
      <div>

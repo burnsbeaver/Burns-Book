@@ -24,6 +24,8 @@ _signIn = async (e) => {
   this.setState({redirect: true})
 }
 
+
+
  _handleChange = (e) => {
    const newState = {...this.state};
    newState[e.target.name] = e.target.value;
@@ -32,7 +34,7 @@ _signIn = async (e) => {
 
  render() {
    if (this.state.redirect){
-     return <Redirect to="/" />
+     return <Redirect to="/user/:userID" />
    }
    return (
      <div>

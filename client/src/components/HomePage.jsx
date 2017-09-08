@@ -4,7 +4,7 @@ class HomePage extends Component {
   render () {
     return (
       <div>
-        Hello World
+        Welcome to OnSide!!!! Please log in or create an account to begin sports betting with fake virtual credits!
       </div>
     )
   }
