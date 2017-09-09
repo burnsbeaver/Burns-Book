@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import nflData from '../nflData.js'
 import axios from 'axios'
 import SingleBet from './SingleBet'
+import BettingSlip from './BettingSlip'
 
 class AccountPage extends Component {
   constructor (){
@@ -11,7 +12,9 @@ class AccountPage extends Component {
         team: "",
       },
       activeBook: {},
-      searchResults: []
+      searchResults: [],
+      bettingSlip: false,
+      bettingSlipGameInfo: {}
     }
   }
   componentWillMount(){
@@ -35,26 +38,51 @@ class AccountPage extends Component {
     newState.searchResults = nflData
     this.setState(newState)
   }
+  _viewBettingSlip = (bet) => {
+    const newState = {...this.state}
+    newState.bettingSlipGameInfo = bet
+    newState.bettingSlip = true
+    this.setState(newState)
+  }
+  _viewSearchResults = () => {
+    const newState = {...this.state}
+    newState.bettingSlip = false
+    this.setState(newState)
+  }
 
   render () {
     const searchResults = this.state.searchResults.map((result, i) => {
-      return <SingleBet key={i} result={result} />
+      return <SingleBet key={i} result={result} viewBettingSlip={this._viewBettingSlip}/>
     })
-    return (
-      <div>
-        <h1>Hello, {this.props.user.nickname}</h1>
-        <h3>Your account balance is {this.state.activeBook.balance}</h3>
+    if (!this.state.bettingSlip) {
+      return (
         <div>
-          <h3>New Bet</h3>
-          <form onSubmit={this._handleSearch}>
-            <input type="text" name="team" placeholder="Search by team" onChange={this._handleChange} />
-            <input type="submit" value="Search"/>
-          </form>
-          <h3>Results:</h3>
-          {searchResults}
+          <h1>Hello, {this.props.user.nickname}</h1>
+          <h3>Your account balance is {this.state.activeBook.balance}</h3>
+          <div>
+            <h3>New Bet</h3>
+            <form onSubmit={this._handleSearch}>
+              <input type="text" name="team" placeholder="Search by team" onChange={this._handleChange} />
+              <input type="submit" value="Search"/>
+            </form>
+            <h3>Results:</h3>
+            {searchResults}
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          <h1>Hello, {this.props.user.nickname}</h1>
+          <h3>Your account balance is {this.state.activeBook.balance}</h3>
+          <div>
+            <h3>New Bet</h3>
+            <BettingSlip viewsearchresults={this._viewSearchResults} bettinginfo={this.state.bettingSlipGameInfo}/>
+          </div>
+        </div>
+      )
+    }
+
   }
 }
 
