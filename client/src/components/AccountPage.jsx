@@ -49,6 +49,10 @@ class AccountPage extends Component {
     newState.bettingSlip = false
     this.setState(newState)
   }
+  _submitBet = (payload) => {
+    console.log(payload)
+    this._viewSearchResults()
+  }
 
   render () {
     const searchResults = this.state.searchResults.map((result, i) => {
@@ -77,7 +81,7 @@ class AccountPage extends Component {
           <h3>Your account balance is {this.state.activeBook.balance}</h3>
           <div>
             <h3>New Bet</h3>
-            <BettingSlip viewsearchresults={this._viewSearchResults} bettinginfo={this.state.bettingSlipGameInfo}/>
+            <BettingSlip submitBet={this._submitBet} viewsearchresults={this._viewSearchResults} bettinginfo={this.state.bettingSlipGameInfo}/>
           </div>
         </div>
       )

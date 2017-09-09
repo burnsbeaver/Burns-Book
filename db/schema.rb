@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908232419) do
+ActiveRecord::Schema.define(version: 20170909155257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20170908232419) do
     t.datetime "updated_at", null: false
     t.string "type"
     t.integer "payout"
+    t.integer "risk"
+    t.boolean "win"
     t.index ["book_id"], name: "index_bets_on_book_id"
   end
 
