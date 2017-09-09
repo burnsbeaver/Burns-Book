@@ -7,7 +7,10 @@ class UserRegistration extends Component {
  constructor(){
    super();
    this.state = {
+       error: '',
        email: '',
+       image: '',
+       nickname: '',
        password: '',
        password_confirmation: '',
        redirect: false
@@ -15,17 +18,20 @@ class UserRegistration extends Component {
  }
 
  _signUp = async (e) => {
-   e.preventDefault();
-   const payload = {
-     email: this.state.email,
-     password: this.state.password,
-     password_confirmation: this.state.password_confirmation
-   }
-   const response = await axios.post('/auth', payload);
-   console.log(response)
-   setAxiosHeaders(response.headers);
-   this.setState({redirect: true})
-   this.props.setuser(response.data.data)
+   try{
+     e.preventDefault();
+     const payload = {
+       email: this.state.email,
+       password: this.state.password,
+       password_confirmation: this.state.password_confirmation
+     }
+     const response = await axios.post('/auth', payload);
+     setAxiosHeaders(response.headers);
+     this.setState({redirect: true})
+     this.props.setuser(response.data.data)
+    } catch(error) {
+      console.error(error);
+    }
  }
 
 
@@ -41,10 +47,19 @@ class UserRegistration extends Component {
    }
    return (
      <div>
+       <h3>{this.state.error}</h3>
        <form onSubmit={this._signUp}>
          <div>
            <label htmlFor="email">E-mail: </label>
            <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
+         </div>
+         <div>
+           <label htmlFor="nickname">Username: </label>
+           <input onChange={this._handleChange} type="text" name="nickname" value={this.state.nickname} />
+         </div>
+         <div>
+           <label htmlFor="image">Profile Image: </label>
+           <input onChange={this._handleChange} type="text" name="image" value={this.state.image} />
          </div>
          <div>
            <label htmlFor="password">Password: </label>
