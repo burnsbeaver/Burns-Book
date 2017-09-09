@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import { setAxiosHeaders, setAxiosDefaults } from './util';
+import { setAxiosDefaults } from './util';
 import NavBar from './components/NavBar'
 import SignIn from './components/SignIn'
 import UserRegistration from './components/UserRegistration'
@@ -31,7 +29,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar />
+          <NavBar user={this.state.user}/>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signin" render= {routeProps =>
               <SignIn {...routeProps}
