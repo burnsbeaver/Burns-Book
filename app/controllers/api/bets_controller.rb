@@ -16,6 +16,6 @@ class Api::BetsController < ApplicationController
   private
 
   def bet_params
-    params.require(:bet).permit(:spread, :team, :gameID, :start, :type, :payout, :risk)
+    params.require(:bet).permit(:spread, :team, :gameID, :start, :oddtype, :payout, :risk)
   end
 end

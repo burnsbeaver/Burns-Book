@@ -49,8 +49,9 @@ class AccountPage extends Component {
     newState.bettingSlip = false
     this.setState(newState)
   }
-  _submitBet = (payload) => {
-    console.log(payload)
+  _submitBet = async (payload) => {
+    const response = await axios.post('api/bets', payload)
+    console.log(response)
     this._viewSearchResults()
   }
 

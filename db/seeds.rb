@@ -12,7 +12,7 @@ Bet.destroy_all
 newbook = Book.new(user_id: 2, balance: 0, active: true)
 
 newbook.bets = [
-  Bet.new(team: "Panthers", spread: 4.5, gameID: 'exid123qwe')
+  Bet.new(team: "Panthers", spread: 4.5, gameID: 'exid123qwe', open: true, oddtype: "Game", payout: 120, risk: 130)
 ]
 
 newbook.save

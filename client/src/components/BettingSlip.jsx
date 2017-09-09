@@ -67,9 +67,25 @@ class BettingSlip extends Component {
       team: this.state.bettingInfo.HomeTeam,
       gameID: this.state.bettingInfo.ID,
       start: this.state.bettingInfo.MatchTime,
-      type: this.state.bettingInfo.Odds[0].OddType,
+      oddtype: this.state.bettingInfo.Odds[0].OddType,
       payout: this.state.homeTeamSpreadBet.amountToWin,
       risk: this.state.homeTeamSpreadBet.amountToRisk
+    }
+    var c = window.confirm(`Are you sure you want to risk ${payload.risk} to win
+      ${payload.payout} on the ${payload.team}? Spread: ${payload.spread}`)
+      if (c == true) {
+        this.props.submitBet(payload)
+      }
+  }
+  _handleAwaySubmit = () => {
+    const payload = {
+      spread: this.state.bettingInfo.Odds[0].PointSpreadAway,
+      team: this.state.bettingInfo.AwayTeam,
+      gameID: this.state.bettingInfo.ID,
+      start: this.state.bettingInfo.MatchTime,
+      oddtype: this.state.bettingInfo.Odds[0].OddType,
+      payout: this.state.awayTeamSpreadBet.amountToWin,
+      risk: this.state.awayTeamSpreadBet.amountToRisk
     }
     var c = window.confirm(`Are you sure you want to risk ${payload.risk} to win
       ${payload.payout} on the ${payload.team}? Spread: ${payload.spread}`)
@@ -91,7 +107,7 @@ class BettingSlip extends Component {
         <Bet>
           <h3>Away: {this.state.bettingInfo.AwayTeam} {this.state.bettingInfo.Odds[0].PointSpreadAway} ({this.state.bettingInfo.Odds[0].PointSpreadAwayLine})</h3>
           <h3>Risk: <input type="number" name="amountToRisk" placeholder="Amount to Wager" onChange={this._handleChangeAwaySpread}/> To Win: {this.state.awayTeamSpreadBet.amountToWin}</h3>
-          <button>Submit</button>
+          <button onClick={this._handleAwaySubmit}>Submit</button>
         </Bet>
 
       </div>
