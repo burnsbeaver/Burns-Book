@@ -7,6 +7,7 @@ import SignIn from './components/SignIn'
 import UserRegistration from './components/UserRegistration'
 import HomePage from './components/HomePage'
 import AccountPage from './components/AccountPage'
+import ShowActiveBook from './components/ShowActiveBook'
 
 
 class App extends Component {
@@ -42,6 +43,10 @@ class App extends Component {
             />}/>
           <Route exact path="/account" render= {routeProps =>
               <AccountPage {...routeProps}
+                user={this.state.user}
+            />}/>
+          <Route exact path="/openbets" render= {routeProps =>
+              <ShowActiveBook {...routeProps}
                 user={this.state.user}
             />}/>
         </div>

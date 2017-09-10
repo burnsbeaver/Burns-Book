@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import nflData from '../nflData.js'
 import mlbData from '../mlbData.js'
 import axios from 'axios'
@@ -65,6 +66,7 @@ class AccountPage extends Component {
         <div>
           <h1>Hello, {this.props.user.nickname}</h1>
           <h3>Your account balance is {this.state.activeBook.balance}</h3>
+          <Link to="/openbets">Details</Link>
           <div>
             <h3>New Bet</h3>
             <form onSubmit={this._handleSearch}>
@@ -81,6 +83,7 @@ class AccountPage extends Component {
         <div>
           <h1>Hello, {this.props.user.nickname}</h1>
           <h3>Your account balance is {this.state.activeBook.balance}</h3>
+          <Link to="/openbets">Details</Link>
           <div>
             <h3>New Bet</h3>
             <BettingSlip submitBet={this._submitBet} viewsearchresults={this._viewSearchResults} bettinginfo={this.state.bettingSlipGameInfo}/>
