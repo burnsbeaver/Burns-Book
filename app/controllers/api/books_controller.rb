@@ -5,4 +5,7 @@ class Api::BooksController < ApplicationController
     @book = @user.books.where(active: true).first
     render json: @book
   end
+  # update
+    #for each 
+  #end
 end

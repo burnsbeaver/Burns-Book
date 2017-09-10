@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import nflData from '../nflData.js'
+import mlbData from '../mlbData.js'
 import axios from 'axios'
 import SingleBet from './SingleBet'
 import BettingSlip from './BettingSlip'
@@ -35,7 +36,7 @@ class AccountPage extends Component {
   _handleSearch = (e) => {
     e.preventDefault()
     const newState = {...this.state}
-    newState.searchResults = nflData
+    newState.searchResults = mlbData
     this.setState(newState)
   }
   _viewBettingSlip = (bet) => {
