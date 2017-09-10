@@ -8,6 +8,7 @@ import UserRegistration from './components/UserRegistration'
 import HomePage from './components/HomePage'
 import AccountPage from './components/AccountPage'
 
+
 class App extends Component {
   constructor(){
     super()
