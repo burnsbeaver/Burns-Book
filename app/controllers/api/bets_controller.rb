@@ -1,5 +1,15 @@
 class Api::BetsController < ApplicationController
   before_action :authenticate_user!
+  include HTTParty
+  base_uri 'https://jsonodds.com/api/odds'
+
+  def findBets(league)
+    response = get "/#{league}?oddtype=game",
+      headers:{
+      "JsonOdds-API-Key" => ""
+    }
+    render json: response
+  end
   def create
     @user = current_user
     @book = @user.books.where(active: true).first
@@ -13,17 +23,6 @@ class Api::BetsController < ApplicationController
       }
     end
   end
-  # def update
-  # find the bet.
-
-  # extract home or away, spread, payout and risk. (maybe entire bet object?)
-  # Use the game ID to find the final score of the game via jsonodds api call
-  # Find out if team covered
-  # change bet to closed
-  # if win -> change win to true, and send the payout to the book controller
-  # if loss -> change win to false, and send the risk to the payout controller (could just send an integer, change it to negative if false)
-
-  # end
 
 
   private

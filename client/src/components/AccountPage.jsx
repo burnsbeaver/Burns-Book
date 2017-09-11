@@ -36,9 +36,7 @@ class AccountPage extends Component {
     this.setState(newState)
   }
   _handleSearch = () => {
-    axios.get('https://jsonodds.com/api/odds/nfl?oddtype=game', {
-      headers: { 'JsonOdds-API-Key': process.env.REACT_APP_KEY }
-    })
+    axios.get('api/bets/findbets/nfl')
       .then((res) => {
         console.log(res)
       })
