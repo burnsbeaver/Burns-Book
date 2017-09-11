@@ -5,6 +5,7 @@ import mlbData from '../mlbData.js'
 import axios from 'axios'
 import SingleBet from './SingleBet'
 import BettingSlip from './BettingSlip'
+import SportsList from './SportsList'
 
 class AccountPage extends Component {
   constructor (){
@@ -35,9 +36,8 @@ class AccountPage extends Component {
     this.setState(newState)
   }
   _handleSearch = (e) => {
-    e.preventDefault()
     const newState = {...this.state}
-    newState.searchResults = mlbData
+    newState.searchResults = nflData
     this.setState(newState)
   }
   _viewBettingSlip = (bet) => {
@@ -71,9 +71,9 @@ class AccountPage extends Component {
           <Link to="/openbets">Details</Link>
           <div>
             <h3>New Bet</h3>
-            <form onSubmit={this._handleSearch}>
+            <SportsList search={this._handleSearch}/>
+            <form>
               <input type="text" name="team" placeholder="Search by team" onChange={this._handleChange} />
-              <input type="submit" value="Search"/>
             </form>
             <h3>Results:</h3>
             {searchResults}
