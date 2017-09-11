@@ -73,7 +73,7 @@ class BettingSlip extends Component {
       payout: this.state.homeTeamSpreadBet.amountToWin,
       risk: this.state.homeTeamSpreadBet.amountToRisk
     }
-    if (this.state.homeTeamSpreadBet.amountToRisk > 10 && this.state.homeTeamSpreadBet.amountToRisk < 200) {
+    if (this.state.homeTeamSpreadBet.amountToRisk >= 10 && this.state.homeTeamSpreadBet.amountToRisk <= 200) {
       var c = window.confirm(`Are you sure you want to risk ${payload.risk} to win
         ${payload.payout} on the ${payload.team}? Spread: ${payload.spread}`)
         if (c == true) {
@@ -96,7 +96,7 @@ class BettingSlip extends Component {
       payout: this.state.awayTeamSpreadBet.amountToWin,
       risk: this.state.awayTeamSpreadBet.amountToRisk
     }
-    if (this.state.awayTeamSpreadBet.amountToRisk > 10 && this.state.awayTeamSpreadBet.amountToRisk < 200) {
+    if (this.state.awayTeamSpreadBet.amountToRisk >= 10 && this.state.awayTeamSpreadBet.amountToRisk <= 200) {
       var c = window.confirm(`Are you sure you want to risk ${payload.risk} to win
         ${payload.payout} on the ${payload.team}? Spread: ${payload.spread}`)
         if (c == true) {
