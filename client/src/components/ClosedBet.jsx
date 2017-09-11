@@ -24,6 +24,7 @@ class ClosedBet extends Component {
       <Bet>
         <h3>{this.props.bet.team} {this.props.bet.spread}</h3>
         <h3>Risk: {this.props.bet.risk} Win: {this.props.bet.payout}</h3>
+        <h3>Result: {this.props.bet.win.toUpperCase()}</h3>
       </Bet>
     )
   }

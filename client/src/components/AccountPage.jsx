@@ -59,7 +59,9 @@ class AccountPage extends Component {
 
   render () {
     const searchResults = this.state.searchResults.map((result, i) => {
-      return <SingleBet key={i} result={result} viewBettingSlip={this._viewBettingSlip}/>
+      if (result.HomeTeam.toLowerCase().indexOf(this.state.search.team.toLowerCase()) !== -1 || result.AwayTeam.toLowerCase().indexOf(this.state.search.team.toLowerCase()) !== -1) {
+        return <SingleBet key={i} result={result} viewBettingSlip={this._viewBettingSlip}/>
+      }
     })
     if (!this.state.bettingSlip) {
       return (
