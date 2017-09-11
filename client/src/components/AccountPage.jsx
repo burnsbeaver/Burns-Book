@@ -35,7 +35,18 @@ class AccountPage extends Component {
     newState.search[attributeName] = attributeValue
     this.setState(newState)
   }
-  _handleSearch = (e) => {
+  _handleSearch = () => {
+    axios.get('https://jsonodds.com/api/odds/nfl?oddtype=game', {
+      headers: { 'JsonOdds-API-Key': process.env.REACT_APP_KEY }
+    })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log('Error: ' + err)
+      })
+
+
     const newState = {...this.state}
     newState.searchResults = nflData
     this.setState(newState)

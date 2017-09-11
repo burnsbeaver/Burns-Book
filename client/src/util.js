@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function setAxiosDefaults(){
-  // axios.defaults.headers['token-type'] = "Bearer";
+  axios.defaults.headers['token-type'] = "Bearer";
   axios.defaults.headers.client  = localStorage.getItem("client");
   axios.defaults.headers.expiry  = localStorage.getItem("expiry");
   axios.defaults.headers.uid  = localStorage.getItem("uid");
