@@ -42,7 +42,9 @@ class AccountPage extends Component {
   }
   _resolveBets = async () => {
     const response = await axios.get('/api/books/resolve')
-    console.log(response)
+    const newState = {...this.state}
+    newState.activeBook = response.data
+    this.setState(newState)
   }
   _viewBettingSlip = (bet) => {
     const newState = {...this.state}
