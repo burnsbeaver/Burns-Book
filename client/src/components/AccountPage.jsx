@@ -40,6 +40,10 @@ class AccountPage extends Component {
     newState.searchResults = nflData
     this.setState(newState)
   }
+  _resolveBets = async () => {
+    const response = await axios.get('/api/books/resolve')
+    console.log(response)
+  }
   _viewBettingSlip = (bet) => {
     const newState = {...this.state}
     newState.bettingSlipGameInfo = bet
@@ -68,6 +72,7 @@ class AccountPage extends Component {
         <div>
           <h1>Hello, {this.props.user.nickname}</h1>
           <h3>Your account balance is {this.state.activeBook.balance}</h3>
+          <button onClick={this._resolveBets}>Resolve Open Bets</button>
           <Link to="/openbets">Details</Link>
           <div>
             <h3>New Bet</h3>
