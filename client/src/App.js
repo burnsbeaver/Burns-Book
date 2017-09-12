@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import { setAxiosDefaults } from './util';
+import axios from 'axios'
 import NavBar from './components/NavBar'
 import SignIn from './components/SignIn'
 import UserRegistration from './components/UserRegistration'
@@ -20,7 +21,28 @@ class App extends Component {
 
   componentWillMount () {
     setAxiosDefaults();
+    this._validateUser();
   }
+
+  _validateUser = async () => {
+    try {
+      const response = await axios.get('auth/validate_token', {
+        // params: {
+        //   uid: localStorage.getItem("uid"),
+        //   client: localStorage.getItem("client"),
+        //   access-token: localStorage.getItem("access-token")
+        // }
+      })
+      const newState = {...this.state}
+      newState.user = response.data.data
+      this.setState(newState)
+    } catch (err) {
+      console.log('Error: ' + err)
+      Redirect
+
+    }
+  }
+
   _setUserState = (returnedUser) => {
     const newState = {...this.state}
     newState.user = returnedUser

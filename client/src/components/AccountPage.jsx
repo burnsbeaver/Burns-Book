@@ -36,14 +36,14 @@ class AccountPage extends Component {
     this.setState(newState)
   }
   _handleSearch = () => {
-    axios.get('api/bets/findbets/nfl')
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log('Error: ' + err)
-      })
-
+    // try {
+    //   const response = axios.get('api/bets/findbets/nfl')
+    //   console.log(response)
+    // }
+    // catch (err){
+    //   console.log("Error: " + err)
+    // }
+    //
 
     const newState = {...this.state}
     newState.searchResults = nflData

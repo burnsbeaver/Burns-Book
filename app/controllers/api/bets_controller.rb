@@ -1,14 +1,7 @@
 class Api::BetsController < ApplicationController
   before_action :authenticate_user!
-  include HTTParty
-  base_uri 'https://jsonodds.com/api/odds'
-
-  def findBets(league)
-    response = get "/#{league}?oddtype=game",
-      headers:{
-      "JsonOdds-API-Key" => ""
-    }
-    render json: response
+  def get_all_bets
+    league = params[:league]
   end
   def create
     @user = current_user
