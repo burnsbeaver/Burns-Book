@@ -2,6 +2,8 @@ class Api::BetsController < ApplicationController
   before_action :authenticate_user!
   def get_all_bets
     league = params[:league]
+    @response = Bet.find_bets(league)
+    render json: @response
   end
   def create
     @user = current_user

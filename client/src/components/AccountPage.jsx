@@ -35,19 +35,19 @@ class AccountPage extends Component {
     newState.search[attributeName] = attributeValue
     this.setState(newState)
   }
-  _handleSearch = () => {
-    // try {
-    //   const response = axios.get('api/bets/findbets/nfl')
-    //   console.log(response)
-    // }
-    // catch (err){
-    //   console.log("Error: " + err)
-    // }
-    //
+  _handleSearch = async (league) => {
+    try {
+      const response = await axios.get(`api/bets/get_all_bets/${league}`)
+      const newState = {...this.state}
+      newState.searchResults = response.data
+      this.setState(newState)
+    }
+    catch (err){
+      console.log("Error: " + err)
+    }
 
-    const newState = {...this.state}
-    newState.searchResults = nflData
-    this.setState(newState)
+
+
   }
   _resolveBets = async () => {
     const response = await axios.get('/api/books/resolve')
@@ -86,12 +86,13 @@ class AccountPage extends Component {
           <button onClick={this._resolveBets}>Resolve Open Bets</button>
           <Link to="/openbets">Details</Link>
           <div>
-            <h3>New Bet</h3>
+            <h3>Click on a league to see all odds for that league!</h3>
             <SportsList search={this._handleSearch}/>
+            <h3>Feel free to narrow down your search below</h3>
             <form>
               <input type="text" name="team" placeholder="Search by team" onChange={this._handleChange} />
             </form>
-            <h3>Results:</h3>
+            <h3>{this.state.searchResults[1] ? 'Results:' : 'No odds for this league'}</h3>
             {searchResults}
           </div>
         </div>

@@ -1,10 +1,9 @@
 class Bet < ApplicationRecord
   belongs_to :book
   include HTTParty
-  base_uri 'https://jsonodds.com/api/odds'
+  base_uri 'http://jsonodds.com/api/odds'
 
-  def self.findBets(league)
-    puts 'Route was hit'
+  def self.find_bets(league)
     response = get "/#{league}?oddtype=game", {
       headers:{
       "JsonOdds-API-Key" => ""
