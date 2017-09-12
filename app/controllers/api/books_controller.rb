@@ -26,31 +26,35 @@ class Api::BooksController < ApplicationController
     @openbets.each do |bet|
       #make axios call, save it as res
 
-      res = {Final: true, HomeScore: nil, AwayScore: nil}
-      res[:HomeScore] = rand(30)
-      res[:AwayScore] = rand(25)
+      puts bet[:gameID]
+      res = Bet.find_bet(bet[:gameID])
+      res = res[0]
 
-      if res[:Final]
+      # res = {Final: true, HomeScore: nil, AwayScore: nil}
+      # res[:HomeScore] = rand(30)
+      # res[:AwayScore] = rand(25)
+
+      if res["Final"] == true
         bet[:open] = false
         if bet[:homeTeam]
           if bet[:spread] < 0
-            if (res[:HomeScore] - res[:AwayScore]) > bet[:spread].abs
+            if (res["HomeScore"].to_i - res["AwayScore"].to_i) > bet[:spread].abs
               bet[:win] = 'win'
-            elsif (res[:HomeScore] - res[:AwayScore]) < bet[:spread].abs
+            elsif (res["HomeScore"].to_i - res["AwayScore"].to_i) < bet[:spread].abs
               bet[:win] = 'loss'
             else
               bet[:win] = 'draw'
             end
           elsif bet[:spread] > 0
-            if (res[:HomeScore] + bet[:spread]) > res[:AwayScore]
+            if (res["HomeScore"].to_i + bet[:spread]) > res["AwayScore"].to_i
               bet[:win] = 'win'
-            elsif (res[:HomeScore] + bet[:spread]) < res[:AwayScore]
+            elsif (res["HomeScore"].to_i + bet[:spread]) < res["AwayScore"].to_i
               bet[:win] = 'loss'
             else
               bet[:win] = 'draw'
             end
           else
-            if res[:HomeScore] > res[:AwayScore]
+            if res["HomeScore"].to_i > res["AwayScore"].to_i
               bet[:win] = 'win'
             else
               bet[:win] = 'loss'
@@ -58,23 +62,23 @@ class Api::BooksController < ApplicationController
           end
         else
           if bet[:spread] < 0
-            if (res[:AwayScore] - res[:HomeScore]) > bet[:spread].abs
+            if (res["AwayScore"].to_i - res["HomeScore"].to_i) > bet[:spread].abs
               bet[:win] = 'win'
-            elsif (res[:AwayScore] - res[:HomeScore]) < bet[:spread].abs
+            elsif (res["AwayScore"].to_i - res["HomeScore"].to_i) < bet[:spread].abs
               bet[:win] = 'loss'
             else
               bet[:win] = 'draw'
             end
           elsif bet[:spread] > 0
-            if (res[:AwayScore] + bet[:spread]) > res[:HomeScore]
+            if (res["AwayScore"].to_i + bet[:spread]) > res["HomeScore"].to_i
               bet[:win] = 'win'
-            elsif (res[:AwayScore] + bet[:spread]) < res[:HomeScore]
+            elsif (res["AwayScore"].to_i + bet[:spread]) < res["HomeScore"].to_i
               bet[:win] = 'loss'
             else
               bet[:win] = 'draw'
             end
           else
-            if res[:AwayScore] > res[:HomeScore]
+            if res["AwayScore"].to_i > res["HomeScore"].to_i
               bet[:win] = 'win'
             else
               bet[:win] = 'loss'
