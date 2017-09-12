@@ -4,7 +4,6 @@ class Bet < ApplicationRecord
   base_uri 'http://jsonodds.com/api'
 
   def self.find_bets(league)
-    puts ENV['MY_API_KEY']
     response = get "/odds/#{league}?oddtype=game", {
       headers:{
       "JsonOdds-API-Key" => ENV['MY_API_KEY']
