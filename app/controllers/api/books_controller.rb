@@ -25,16 +25,19 @@ class Api::BooksController < ApplicationController
     @time = Time.new
     @openbets.each do |bet|
       #make axios call, save it as res
+      #
+      # puts bet[:gameID]
+      # res = Bet.find_bet(bet[:gameID])
+      # res = res[0]
 
-      puts bet[:gameID]
-      res = Bet.find_bet(bet[:gameID])
-      res = res[0]
-
-      # res = {Final: true, HomeScore: nil, AwayScore: nil}
-      # res[:HomeScore] = rand(30)
-      # res[:AwayScore] = rand(25)
+      res = {'Final' => true, 'HomeScore' => nil, 'AwayScore' => nil}
+      res['HomeScore'] = rand(30).to_s
+      res['AwayScore'] = rand(25).to_s
+      puts res
+      puts bet
 
       if res["Final"] == true
+        puts 'HELLOW'
         bet[:open] = false
         if bet[:homeTeam]
           if bet[:spread] < 0

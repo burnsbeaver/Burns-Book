@@ -21,12 +21,13 @@ class AccountPage extends Component {
     }
   }
   componentWillMount(){
-    axios.get(`api/books`)
-      .then((response) => {
-        const newState = {...this.state}
-        newState.activeBook = response.data
-        this.setState(newState)
-      })
+    // axios.get(`api/books`)
+    //   .then((response) => {
+    //     const newState = {...this.state}
+    //     newState.activeBook = response.data
+    //     this.setState(newState)
+    //   })
+    this._resolveBets()
   }
   _handleChange = (e) => {
     const attributeValue = e.target.value
@@ -45,8 +46,6 @@ class AccountPage extends Component {
     catch (err){
       console.log("Error: " + err)
     }
-
-
 
   }
   _resolveBets = async () => {
