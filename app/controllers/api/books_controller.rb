@@ -55,48 +55,60 @@ class Api::BooksController < ApplicationController
           if bet[:spread] < 0
             if (res["HomeScore"].to_i - res["AwayScore"].to_i) > bet[:spread].abs
               bet[:win] = 'win'
+              puts 'win 1'
             elsif (res["HomeScore"].to_i - res["AwayScore"].to_i) < bet[:spread].abs
               bet[:win] = 'loss'
+              puts 'loss 1'
             else
               bet[:win] = 'draw'
             end
           elsif bet[:spread] > 0
             if (res["HomeScore"].to_i + bet[:spread]) > res["AwayScore"].to_i
               bet[:win] = 'win'
+              puts 'win 2'
             elsif (res["HomeScore"].to_i + bet[:spread]) < res["AwayScore"].to_i
               bet[:win] = 'loss'
+              puts 'loss 2'
             else
               bet[:win] = 'draw'
             end
           else
             if res["HomeScore"].to_i > res["AwayScore"].to_i
               bet[:win] = 'win'
+              puts 'win 3'
             else
               bet[:win] = 'loss'
+              puts 'loss 3'
             end
           end
         else
           if bet[:spread] < 0
             if (res["AwayScore"].to_i - res["HomeScore"].to_i) > bet[:spread].abs
               bet[:win] = 'win'
+              puts 'win 4'
             elsif (res["AwayScore"].to_i - res["HomeScore"].to_i) < bet[:spread].abs
               bet[:win] = 'loss'
+              puts 'loss 4'
             else
               bet[:win] = 'draw'
             end
           elsif bet[:spread] > 0
             if (res["AwayScore"].to_i + bet[:spread]) > res["HomeScore"].to_i
               bet[:win] = 'win'
+              puts 'win 5'
             elsif (res["AwayScore"].to_i + bet[:spread]) < res["HomeScore"].to_i
               bet[:win] = 'loss'
+              puts 'loss 5'
             else
               bet[:win] = 'draw'
             end
           else
             if res["AwayScore"].to_i > res["HomeScore"].to_i
               bet[:win] = 'win'
+              puts 'win 6'
             else
               bet[:win] = 'loss'
+              puts 'loss 6'
             end
           end
         end
