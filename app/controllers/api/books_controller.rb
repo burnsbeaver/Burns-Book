@@ -55,7 +55,6 @@ class Api::BooksController < ApplicationController
           if bet[:spread] < 0
             if (res["HomeScore"].to_i - res["AwayScore"].to_i) > bet[:spread].abs
               bet[:win] = 'win'
-              puts 'win1'
             elsif (res["HomeScore"].to_i - res["AwayScore"].to_i) < bet[:spread].abs
               bet[:win] = 'loss'
             else
@@ -64,7 +63,6 @@ class Api::BooksController < ApplicationController
           elsif bet[:spread] > 0
             if (res["HomeScore"].to_i + bet[:spread]) > res["AwayScore"].to_i
               bet[:win] = 'win'
-              puts 'win2'
             elsif (res["HomeScore"].to_i + bet[:spread]) < res["AwayScore"].to_i
               bet[:win] = 'loss'
             else
@@ -73,7 +71,6 @@ class Api::BooksController < ApplicationController
           else
             if res["HomeScore"].to_i > res["AwayScore"].to_i
               bet[:win] = 'win'
-              puts 'win3'
             else
               bet[:win] = 'loss'
             end
@@ -82,7 +79,6 @@ class Api::BooksController < ApplicationController
           if bet[:spread] < 0
             if (res["AwayScore"].to_i - res["HomeScore"].to_i) > bet[:spread].abs
               bet[:win] = 'win'
-              puts 'win4'
             elsif (res["AwayScore"].to_i - res["HomeScore"].to_i) < bet[:spread].abs
               bet[:win] = 'loss'
             else
@@ -91,7 +87,6 @@ class Api::BooksController < ApplicationController
           elsif bet[:spread] > 0
             if (res["AwayScore"].to_i + bet[:spread]) > res["HomeScore"].to_i
               bet[:win] = 'win'
-              puts 'win5'
             elsif (res["AwayScore"].to_i + bet[:spread]) < res["HomeScore"].to_i
               bet[:win] = 'loss'
             else
@@ -100,7 +95,6 @@ class Api::BooksController < ApplicationController
           else
             if res["AwayScore"].to_i > res["HomeScore"].to_i
               bet[:win] = 'win'
-              puts 'win6'
             else
               bet[:win] = 'loss'
             end
@@ -113,8 +107,12 @@ class Api::BooksController < ApplicationController
     @number = 0
     @closedbets.each do |bet|
       if bet.win == 'win'
+        puts bet.gameID
+        puts 'WIN'
         @number = @number + bet.payout
       elsif bet.win == 'loss'
+        puts bet.gameID
+        puts 'LOSS'
         @number = @number - bet.risk
       end
     end
