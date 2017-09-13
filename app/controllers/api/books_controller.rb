@@ -31,15 +31,11 @@ class Api::BooksController < ApplicationController
     @time = Time.now.utc
 
     @openbets.each do |bet|
-      puts "Time now: "
-      puts @time.class.name
-      puts @time
-      puts "Game time:"
-      puts bet.start.class.name
-      puts bet.start
-      # puts Time.parse(@time).class.name
-      # puts Time.parse(bet.start)
+      puts @time.to_i
+      puts bet.start.to_i
       next unless @time.to_i < bet.start.to_i
+      puts'DOESNT WORK'
+      puts bet[:spread]
       res = Bet.find_bet(bet[:gameID])
       res = res[0]
 
