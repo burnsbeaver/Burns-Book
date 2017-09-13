@@ -29,8 +29,13 @@ class Api::BooksController < ApplicationController
     end
     @openbets = @book.bets.where(open: true)
     @time = Time.now.utc
+
     @openbets.each do |bet|
+      puts "Time now: "
+      puts @time.class.name
       puts @time
+      puts "Game time:"
+      puts bet.start.class.name
       puts bet.start
       # puts Time.parse(@time).class.name
       # puts Time.parse(bet.start)
