@@ -39,7 +39,7 @@ class Api::BooksController < ApplicationController
       puts bet.start
       # puts Time.parse(@time).class.name
       # puts Time.parse(bet.start)
-      # next unless Time.parse(@time) < Time.parse(bet.start)
+      next unless @time.to_i < bet.start.to_i
       res = Bet.find_bet(bet[:gameID])
       res = res[0]
 
