@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import OpenBet from './OpenBet'
 import ClosedBet from './ClosedBet'
@@ -21,6 +22,10 @@ class ShowActiveBook extends Component {
       })
   }
   render () {
+    if (!localStorage['access-token']) {
+      console.log('Redirect')
+      return (<Redirect to='/' />)
+    }
     const openBets = this.state.openBets.map((bet, i) => {
       return <OpenBet key={i} bet={bet} />
     })

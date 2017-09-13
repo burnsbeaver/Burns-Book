@@ -17,7 +17,6 @@ class Bet < ApplicationRecord
       "JsonOdds-API-Key" => ENV['MY_API_KEY']
       }
     }
-
-    response.body
+    JSON.parse(response.body)
   end
 end

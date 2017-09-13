@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import axios from 'axios'
 import styled from "styled-components";
 
 const Navbar = styled.div`
@@ -21,14 +22,19 @@ const Navbar = styled.div`
 `;
 
 class NavBar extends Component {
+  _logout = () => {
+    this.props.logout()
+  }
+
   render () {
-    if (this.props.user.name) {
+    if (this.props.user.email) {
       return (
         <Navbar>
          <h1>Burns-Book</h1>
          <div>
-           <h3>Hello, {this.props.user.name}</h3>
+           <h3>Hello, {this.props.user.email}</h3>
            <Link to="/account">Account Page</Link>
+           <a onClick={this._logout}>Logout</a>
          </div>
        </Navbar>
       )

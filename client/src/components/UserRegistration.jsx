@@ -23,11 +23,14 @@ class UserRegistration extends Component {
      const payload = {
        email: this.state.email,
        password: this.state.password,
-       password_confirmation: this.state.password_confirmation
+       password_confirmation: this.state.password_confirmation,
+      //  nickname: this.state.nickname,
+      //  image: this.state.image
      }
      const response = await axios.post('/auth', payload);
      setAxiosHeaders(response.headers);
      this.setState({redirect: true})
+     console.log(response.data.data)
      this.props.setuser(response.data.data)
     } catch(error) {
       console.error(error);
@@ -53,14 +56,14 @@ class UserRegistration extends Component {
            <label htmlFor="email">E-mail: </label>
            <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
          </div>
-         <div>
-           <label htmlFor="nickname">Username: </label>
-           <input onChange={this._handleChange} type="text" name="nickname" value={this.state.nickname} />
-         </div>
-         <div>
-           <label htmlFor="image">Profile Image: </label>
-           <input onChange={this._handleChange} type="text" name="image" value={this.state.image} />
-         </div>
+        //  <div>
+        //    <label htmlFor="nickname">Username: </label>
+        //    <input onChange={this._handleChange} type="text" name="nickname" value={this.state.nickname} />
+        //  </div>
+        //  <div>
+        //    <label htmlFor="image">Profile Image: </label>
+        //    <input onChange={this._handleChange} type="text" name="image" value={this.state.image} />
+        //  </div>
          <div>
            <label htmlFor="password">Password: </label>
            <input onChange={this._handleChange} type="text" name="password" value={this.state.password} />

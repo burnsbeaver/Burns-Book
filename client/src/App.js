@@ -24,6 +24,14 @@ class App extends Component {
     this._validateUser();
   }
 
+  _logout = () => {
+    axios.delete('/auth/sign_out')
+      .then((response) => {
+        localStorage.clear()
+        this.setState({user: {}})
+      })
+  }
+
   _validateUser = async () => {
     try {
       const response = await axios.get('auth/validate_token', {
@@ -53,7 +61,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar user={this.state.user}/>
+          <NavBar user={this.state.user} logout={this._logout}/>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signin" render= {routeProps =>
               <SignIn {...routeProps}

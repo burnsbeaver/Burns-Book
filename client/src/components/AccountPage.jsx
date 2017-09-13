@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import nflData from '../nflData.js'
 import mlbData from '../mlbData.js'
 import axios from 'axios'
@@ -72,6 +72,10 @@ class AccountPage extends Component {
   }
 
   render () {
+    if (!localStorage['access-token']) {
+      console.log('Redirect')
+      return (<Redirect to='/' />)
+    }
     const searchResults = this.state.searchResults.map((result, i) => {
       if (result.HomeTeam.toLowerCase().indexOf(this.state.search.team.toLowerCase()) !== -1 || result.AwayTeam.toLowerCase().indexOf(this.state.search.team.toLowerCase()) !== -1) {
         return <SingleBet key={i} result={result} viewBettingSlip={this._viewBettingSlip}/>
@@ -87,7 +91,7 @@ class AccountPage extends Component {
           <div>
             <h3>Click on a league to see all odds for that league!</h3>
             <SportsList search={this._handleSearch}/>
-            <h3>Feel free to narrow down your search below</h3>
+            <h3>Browse all, or narrow down your search results below</h3>
             <form>
               <input type="text" name="team" placeholder="Search by team" onChange={this._handleChange} />
             </form>
