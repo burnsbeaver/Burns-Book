@@ -32,7 +32,7 @@ class NavBar extends Component {
         <Navbar>
          <h1>Burns-Book</h1>
          <div>
-           <h3>Hello, {this.props.user.email}</h3>
+           <h3>Hello, {this.props.user.nickname}</h3>
            <Link to="/account">Account Page</Link>
            <a onClick={this._logout}>Logout</a>
          </div>
