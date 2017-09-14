@@ -16,14 +16,24 @@ class ClosedBet extends Component {
     }
 
     const Bet = styled.div`
+      width: 90%;
+      margin: 0 2.5%;
+      padding: 0 2.5%;
       display: flex;
       justify-content: space-between;
       border: solid black 1px;
       background-color: ${backgroundColor()};
+
+      h3{
+        width: 20%;
+      }
+      h3.team{
+        width: 60%;
+      }
     `
     return(
       <Bet>
-        <h3>{this.props.bet.team} {this.props.bet.spread}</h3>
+        <h3 className="team">{this.props.bet.team} {this.props.bet.spread}</h3>
         <h3 className="risk">Risk: {this.props.bet.risk}</h3>
         <h3 className="win">Win: {this.props.bet.payout}</h3>
         <h3>Result: {this.props.bet.win.toUpperCase()}</h3>

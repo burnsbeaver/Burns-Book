@@ -14,7 +14,7 @@ const Navbar = styled.div`
   color: white;
   a {
     text-decoration: none;
-    margin: 0 5px;
+    margin: 10px 10px;
     &:visited {
       color: white;
     }

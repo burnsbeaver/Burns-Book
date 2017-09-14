@@ -6,6 +6,10 @@ import 'moment-timezone'
 const Bet = styled.div`
   color: blue;
   border: solid black 1px;
+  button {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 `
 
 class SingleBet extends Component {
