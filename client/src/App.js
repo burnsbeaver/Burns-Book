@@ -48,7 +48,14 @@ injectGlobal`
     }
   }
   input {
+    padding: 10px;
+    border: solid 5px #c9c9c9;
+    box-shadow: inset 0 0 0 1px #707070;
+    transition: box-shadow 0.3s, border 0.3s;
     margin: 20px;
+  }
+  input:focus{
+    border: solid 5px #969696;
   }
     `
 

@@ -22,8 +22,10 @@ const Flex = styled.div`
   @media (max-width: 1000px) {
     flex-direction: column;
     h3 {
-      margin-top: 3px;
-      margin-bottom: 3px;
+      margin: 2px;
+    }
+    input {
+      margin: 2px;
     }
   }
 `
