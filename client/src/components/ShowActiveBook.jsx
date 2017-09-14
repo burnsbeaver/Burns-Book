@@ -35,9 +35,9 @@ class ShowActiveBook extends Component {
     return (
       <div>
         <h1>Open Bets:</h1>
-        {openBets}
+        {this.state.openBets.length ? openBets : 'No Open Bets'}
         <h1>History:</h1>
-        {closedBets}
+        {this.state.closedBets.length ? closedBets : 'No Bet History'}
       </div>
     )
   }

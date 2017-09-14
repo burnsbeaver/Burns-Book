@@ -7,6 +7,7 @@ class SignUp extends Component {
  constructor(){
    super();
    this.state = {
+       errors: [],
        email: '',
        password: '',
        redirect: false
@@ -14,16 +15,23 @@ class SignUp extends Component {
  }
 
 _signIn = async (e) => {
+try {
   e.preventDefault();
   const payload = {
     email: this.state.email,
     password: this.state.password,
   }
-  const response = await axios.post('/auth/sign_in', payload);
-  setAxiosHeaders(response.headers);
-  console.log(response)
-  this.setState({redirect: true})
-  this.props.setuser(response.data.data)
+    const response = await axios.post('/auth/sign_in', payload);
+    setAxiosHeaders(response.headers);
+    console.log(response)
+    this.setState({redirect: true})
+    this.props.setuser(response.data.data)
+  } catch (err) {
+      console.log(err.response.data)
+      const newState = {...this.state}
+      newState.errors = err.response.data.errors
+      this.setState(newState)
+  }
 }
 
 
@@ -35,11 +43,16 @@ _signIn = async (e) => {
  }
 
  render() {
+   const errors = this.state.errors.map((error, i) => {
+     return <div key={i}>{error}</div>
+   })
    if (this.state.redirect){
      return <Redirect to="/account" />
    }
    return (
+
      <div>
+       {errors}
        <form onSubmit={this._signIn}>
          <div>
            <label htmlFor="email">E-mail: </label>

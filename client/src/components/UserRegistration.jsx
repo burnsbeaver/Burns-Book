@@ -7,7 +7,7 @@ class UserRegistration extends Component {
  constructor(){
    super();
    this.state = {
-       error: '',
+       errors: [],
        email: '',
        image: '',
        nickname: '',
@@ -32,8 +32,11 @@ class UserRegistration extends Component {
      this.setState({redirect: true})
      console.log(response.data.data)
      this.props.setuser(response.data.data)
-    } catch(error) {
-      console.error(error);
+    } catch (err) {
+        console.log(err.response.data.errors.full_messages)
+        const newState = {...this.state}
+        newState.errors = err.response.data.errors.full_messages
+        this.setState(newState)
     }
  }
 
@@ -45,12 +48,15 @@ class UserRegistration extends Component {
  }
 
  render() {
+   const errors = this.state.errors.map((error, i) => {
+     return <div key={i}>{error}</div>
+   })
    if (this.state.redirect){
      return <Redirect to="/account" />
    }
    return (
      <div>
-       <h3>{this.state.error}</h3>
+       {errors}
        <form onSubmit={this._signUp}>
          <div>
            <label htmlFor="email">E-mail: </label>
