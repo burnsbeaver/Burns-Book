@@ -90,8 +90,7 @@ class AccountPage extends Component {
         <div>
           <h1>Hello, {this.props.user.nickname}</h1>
           <h3>Your account balance is {this.state.activeBook.balance}</h3>
-          <button onClick={this._resolveBets}>Resolve Open Bets</button>
-          <Link to="/openbets">Details</Link>
+          <Link to="/openbets">View Betting History</Link>
           <div>
             <h3>Click on a league to see all odds for that league!</h3>
             <SportsList search={this._handleSearch}/>
