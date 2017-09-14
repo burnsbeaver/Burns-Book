@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import nflData from '../nflData.js'
-import mlbData from '../mlbData.js'
+import moment from 'moment'
 import axios from 'axios'
 import SingleBet from './SingleBet'
 import BettingSlip from './BettingSlip'
@@ -21,12 +20,6 @@ class AccountPage extends Component {
     }
   }
   componentWillMount(){
-    // axios.get(`api/books`)
-    //   .then((response) => {
-    //     const newState = {...this.state}
-    //     newState.activeBook = response.data
-    //     this.setState(newState)
-    //   })
     this._resolveBets()
   }
   _handleChange = (e) => {

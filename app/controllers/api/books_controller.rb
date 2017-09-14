@@ -33,7 +33,7 @@ class Api::BooksController < ApplicationController
     @openbets.each do |bet|
       puts @time.to_i
       puts bet.start.to_i
-      next unless @time.to_i < bet.start.to_i
+      next unless @time.to_i > bet.start.to_i
       puts'DOESNT WORK'
       puts bet[:spread]
       res = Bet.find_bet(bet[:gameID])
