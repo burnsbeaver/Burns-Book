@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
+import Moment from 'react-moment'
 import moment from 'moment'
 import axios from 'axios'
 import SingleBet from './SingleBet'
@@ -59,12 +60,21 @@ class AccountPage extends Component {
     this.setState(newState)
   }
   _submitBet = async (payload) => {
-    const response = await axios.post('api/bets', payload)
-    console.log(response)
-    this._viewSearchResults()
+    var date = new Date()
+    var starttime = moment(payload.start, moment.ISO_8601);
+    var hasGameStarted = (date - starttime)
+    console.log(hasGameStarted)
+    if (hasGameStarted > 0) {
+      alert('Game has started, to late to put in this bet')
+    } else {
+      const response = await axios.post('api/bets', payload)
+      console.log(response)
+      this._viewSearchResults()
+    }
   }
 
   render () {
+    var date = new Date
     if (!localStorage['access-token']) {
       console.log('Redirect')
       return (<Redirect to='/' />)
@@ -88,6 +98,7 @@ class AccountPage extends Component {
             <form>
               <input type="text" name="team" placeholder="Search by team" onChange={this._handleChange} />
             </form>
+            <Moment parse="YYYY-MM-DD HH" interval={3000}>{new Date()}</Moment>
             <h3>{this.state.searchResults[1] ? 'Results:' : 'No odds for this league'}</h3>
             {searchResults}
           </div>
