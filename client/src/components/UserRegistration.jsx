@@ -62,7 +62,7 @@ class UserRegistration extends Component {
          </div>
          <div>
            <label htmlFor="image">Profile Image: </label>
-           <input onChange={this._handleChange} type="text" name="image" value={this.state.image} required/>
+           <input onChange={this._handleChange} type="text" name="image" value={this.state.image} />
          </div>
          <div>
            <label htmlFor="password">Password: </label>
