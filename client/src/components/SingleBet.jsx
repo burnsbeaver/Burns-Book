@@ -19,7 +19,7 @@ class SingleBet extends Component {
         <h3>Home: {this.props.result.HomeTeam} at {this.props.result.Odds[0].PointSpreadHome} ({this.props.result.Odds[0].PointSpreadHomeLine})
            <br/> VS <br/>
            Away: {this.props.result.AwayTeam} at {this.props.result.Odds[0].PointSpreadAway} ({this.props.result.Odds[0].PointSpreadAwayLine})</h3>
-         <Moment tz="EST">{dateToFormat}</Moment> <br/>
+        <Moment tz="EST">{dateToFormat}</Moment> <br/>
         <button onClick={this._handleClick}>View Full Betting Slip</button>
       </Bet>
     )
