@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import { setAxiosDefaults } from './util';
 import axios from 'axios'
+import { injectGlobal } from 'styled-components'
 import NavBar from './components/NavBar'
 import SignIn from './components/SignIn'
 import UserRegistration from './components/UserRegistration'
@@ -10,6 +11,46 @@ import HomePage from './components/HomePage'
 import AccountPage from './components/AccountPage'
 import ShowActiveBook from './components/ShowActiveBook'
 
+
+injectGlobal`
+  body {
+    background-image: url('https://image.freepik.com/free-vector/grey-linen-texture-background_1053-253.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: courier;
+    font-weight: 600;
+    button {
+      background: #7fccff;
+      background-image: -webkit-linear-gradient(top, #7fccff, #0b1114);
+      background-image: -moz-linear-gradient(top, #7fccff, #0b1114);
+      background-image: -ms-linear-gradient(top, #7fccff, #0b1114);
+      background-image: -o-linear-gradient(top, #7fccff, #0b1114);
+      background-image: linear-gradient(to bottom, #7fccff, #0b1114);
+      -webkit-border-radius: 6;
+      -moz-border-radius: 6;
+      border-radius: 6px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 15px;
+      padding: 4px 8px 4px 8px;
+      text-decoration: none;
+    }
+
+    button:hover {
+      background: #3cb0fd;
+      background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+      text-decoration: none;
+    }
+  }
+  input {
+    margin: 20px;
+  }
+    `
 
 class App extends Component {
   constructor(){

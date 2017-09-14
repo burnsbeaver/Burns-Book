@@ -4,9 +4,10 @@ import styled from 'styled-components'
 const Sports = styled.div`
 display: flex;
 justify-content: space-around;
-width: 40%;
-margin-left: 30%;
-margin-right: 30%;
+flex-wrap: wrap;
+width: 80%;
+margin-left: 10%;
+margin-right: 10%;
 margin-bottom: 5vh;
 h5 {
   margin-bottom: 0;
