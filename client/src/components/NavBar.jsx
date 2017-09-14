@@ -30,7 +30,7 @@ class NavBar extends Component {
     if (this.props.user.email) {
       return (
         <Navbar>
-         <h1>Onside</h1>
+         <h1>OnSide</h1>
          <div>
            <h3>Hello, {this.props.user.nickname}</h3>
            <Link to="/account">Account Page</Link>
@@ -41,7 +41,7 @@ class NavBar extends Component {
     }else {
       return(
         <Navbar>
-         <h1>Burns-Book</h1>
+         <h1>OnSide</h1>
          <div>
            <Link to="/">Home</Link>
            <Link to="/signUp">Sign Up</Link>
