@@ -48,14 +48,14 @@ class Api::BooksController < ApplicationController
       if res["Final"] == true
         bet[:open] = false
         puts 'HOME?'
-        puts bet[:homeTeam]
+        puts bet[:hometeam]
         puts 'HOMESCORE'
         puts res['HomeScore'].to_i
         puts 'AWAYSCORE'
         puts res['AwayScore'].to_i
         puts 'SPREAD'
         puts bet[:spread]
-        if bet[:homeTeam]
+        if bet[:hometeam]
           if bet[:spread] < 0
             if (res["HomeScore"].to_i - res["AwayScore"].to_i) > bet[:spread].abs
               bet[:win] = 'win'
