@@ -1,26 +1,38 @@
-# README
+# OnSide
 
-ghellwqe
+## Overview
+Ever feel like you could make it big in vegas? Think you know sports well? Test your knowledge and luck with OnSide! A virtual FAKE betting app that lets you utilize live odds to bet virtual credits on your favorite teams!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[OnSide!](http://burns-book.herokuapp.com)
 
-Things you may want to cover:
+### How it works / Features
+* Search by league to find all live odds for that league, and narrow down teams using the search bar (Updates in live time).
 
-* Ruby version
+* Pick a bet, and calculate how much you have to risk and how much you would win, using the live odds.
 
-* System dependencies
+* Place your bet, and watch the game as the bet will now be marked as an open bet.
 
-* Configuration
+* When the game ends, your bet will close, be moved to bet history, and your account balance will be updated to reflect how your winnings/losings
 
-* Database creation
+## Technologies Used
+### Languages
+* Ruby
+* JavaScript
+* CSS
+### Libraries
+* Ruby on Rails
+* React.JS
+* Node.JS
+* Moment.JS
+* Styled Components
+* JSON-Odds API
+* HTTParty and Axios
+* PostGres with Active Record
 
-* Database initialization
+## Future Development
+* Moneyline Odds
+* Over/Under Odds
+* Multiple books per account, auto close above or below 200
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## WireFrame and ERD
+![WireFrame](/public/images/onsideWireFrame.png?raw=true)

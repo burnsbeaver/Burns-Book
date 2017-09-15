@@ -106,9 +106,6 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.match.isExact == '/') {
-      console.log('works!')
-    }
     return (
       <Router>
         <div className="App">
