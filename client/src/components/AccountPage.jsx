@@ -60,8 +60,9 @@ class AccountPage extends Component {
     this.setState(newState)
   }
   _submitBet = async (payload) => {
-    var date = new Date()
+    var date = moment.utc()
     var starttime = moment(payload.start, moment.ISO_8601);
+    console.log(date + '   ' + starttime)
     var hasGameStarted = (date - starttime)
     console.log(hasGameStarted)
     if (hasGameStarted > 0) {
@@ -75,6 +76,7 @@ class AccountPage extends Component {
 
   render () {
     var date = moment.utc()
+    const dateToFormat = date.format('LLLL')
     date.tz('America/Chicago').format('ha z')
     if (!localStorage['access-token']) {
       console.log('Redirect')
@@ -98,7 +100,8 @@ class AccountPage extends Component {
             <form>
               <input type="text" name="team" placeholder="Search by team" onChange={this._handleChange} />
             </form>
-            <Moment parse="YYYY-MM-DD HH" interval={30000}>{date}</Moment>
+            <h3>All time in UTC:</h3>
+            <div>Current time: {dateToFormat}</div>
             <h3>{this.state.searchResults[1] ? 'Results:' : 'No odds for this league'}</h3>
             {searchResults}
           </div>

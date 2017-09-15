@@ -6,10 +6,11 @@ const Bet = styled.div`
   margin: 0 2.5%;
   padding: 0 2.5%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   border: solid black 1px;
   h3{
-    width: 25%
+    width: 40%
   }
 `
 

@@ -134,7 +134,7 @@ class BettingSlip extends Component {
       <div>
         <button onClick={this._handleClick}>Cancel Bet</button>
         <h3>Instructions:</h3>
-        <p>For everybet you would to make, please enter the amount you would like to wager. Then, press submit to recieve a confimation STUFF</p>
+        <p>For everybet you would to make, please enter the amount you would like to wager. Then, press submit to recieve a bet confirmation.</p>
         <Bet>
           <Flex>
             <div>

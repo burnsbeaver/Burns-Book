@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Moment from 'react-moment';
+import moment from 'moment'
 import 'moment-timezone'
 
 const Bet = styled.div`
@@ -17,13 +18,13 @@ class SingleBet extends Component {
     this.props.viewBettingSlip(this.props.result)
   }
   render () {
-    const dateToFormat = this.props.result.MatchTime
+    const dateToFormat = moment(this.props.result.MatchTime).format('LLLL')
     return(
       <Bet>
         <h3>Home: {this.props.result.HomeTeam} at {this.props.result.Odds[0].PointSpreadHome} ({this.props.result.Odds[0].PointSpreadHomeLine})
            <br/> VS <br/>
            Away: {this.props.result.AwayTeam} at {this.props.result.Odds[0].PointSpreadAway} ({this.props.result.Odds[0].PointSpreadAwayLine})</h3>
-        <Moment tz="EST">{dateToFormat}</Moment> <br/>
+        <div>{dateToFormat}</div>
         <button onClick={this._handleClick}>View Full Betting Slip</button>
       </Bet>
     )
