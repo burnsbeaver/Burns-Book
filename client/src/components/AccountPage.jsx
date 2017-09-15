@@ -6,6 +6,7 @@ import axios from 'axios'
 import SingleBet from './SingleBet'
 import BettingSlip from './BettingSlip'
 import SportsList from './SportsList'
+import Number from './Number'
 
 class AccountPage extends Component {
   constructor (){
@@ -93,7 +94,7 @@ class AccountPage extends Component {
       return (
         <div>
           <h1>Hello, {this.props.user.nickname}</h1>
-          <h3>Your account balance is {this.state.activeBook.balance}</h3>
+          <h3>Your account balance is <Number number={this.state.activeBook.balance} /></h3>
           <Link to="/openbets">View Betting History</Link>
           <div>
             <h3>Click on a league to see all odds for that league!</h3>
@@ -113,7 +114,7 @@ class AccountPage extends Component {
       return (
         <div>
           <h1>Hello, {this.props.user.nickname}</h1>
-          <h3>Your account balance is {this.state.activeBook.balance}</h3>
+          <h3>Your account balance is <Number number={this.state.activeBook.balance} /></h3>
           <Link to="/openbets">View Betting History</Link>
           <div>
             <h3>New Bet</h3>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Number from './Number'
 
 
 
@@ -33,7 +34,7 @@ class ClosedBet extends Component {
     `
     return(
       <Bet>
-        <h3 className="team">{this.props.bet.team} {this.props.bet.spread}</h3>
+        <h3 className="team">{this.props.bet.team} <Number number={this.props.bet.spread} /></h3>
         <h3 className="risk">Risk: {this.props.bet.risk}</h3>
         <h3 className="win">Win: {this.props.bet.payout}</h3>
         <h3>Result: {this.props.bet.win.toUpperCase()}</h3>

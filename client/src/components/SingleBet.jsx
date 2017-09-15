@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Moment from 'react-moment';
 import moment from 'moment'
 import 'moment-timezone'
+import Number from './Number'
 
 const Bet = styled.div`
   color: blue;
@@ -21,9 +22,9 @@ class SingleBet extends Component {
     const dateToFormat = moment(this.props.result.MatchTime).format('LLLL')
     return(
       <Bet>
-        <h3>Home: {this.props.result.HomeTeam} at {this.props.result.Odds[0].PointSpreadHome} ({this.props.result.Odds[0].PointSpreadHomeLine})
+        <h3>Home: {this.props.result.HomeTeam} at <Number number={this.props.result.Odds[0].PointSpreadHome} /> (<Number number={this.props.result.Odds[0].PointSpreadHomeLine} /> )
            <br/> VS <br/>
-           Away: {this.props.result.AwayTeam} at {this.props.result.Odds[0].PointSpreadAway} ({this.props.result.Odds[0].PointSpreadAwayLine})</h3>
+           Away: {this.props.result.AwayTeam} at <Number number={this.props.result.Odds[0].PointSpreadAway} /> (<Number number={this.props.result.Odds[0].PointSpreadAwayLine} />)</h3>
         <div>{dateToFormat}</div>
         <button onClick={this._handleClick}>View Full Betting Slip</button>
       </Bet>

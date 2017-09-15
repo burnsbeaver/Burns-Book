@@ -15,19 +15,25 @@ Ever feel like you could make it big in vegas? Think you know sports well? Test 
 * When the game ends, your bet will close, be moved to bet history, and your account balance will be updated to reflect how your winnings/losings
 
 ## Technologies Used
+
 ### Languages
 * Ruby
 * JavaScript
 * CSS
+
 ### Libraries
 * Ruby on Rails
 * React.JS
 * Node.JS
 * Moment.JS
 * Styled Components
-* JSON-Odds API
 * HTTParty and Axios
 * PostGres with Active Record
+
+### Tools
+* [Trello](https://trello.com/b/v1EDW1m7/burns-book)
+* Atom
+* JSON-Odds API
 
 ## Future Development
 * Moneyline Odds

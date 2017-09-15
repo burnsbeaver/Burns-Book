@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Number from './Number'
 
 const Bet = styled.div`
   width: 90%;
@@ -18,7 +19,7 @@ class OpenBet extends Component {
   render () {
     return(
       <Bet>
-        <h3>{this.props.bet.team} {this.props.bet.spread}</h3>
+        <h3>{this.props.bet.team} <Number number={this.props.bet.spread} /></h3>
         <h3>Risk: {this.props.bet.risk} Win: {this.props.bet.payout}</h3>
       </Bet>
     )
