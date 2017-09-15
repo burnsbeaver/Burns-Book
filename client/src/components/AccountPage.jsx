@@ -61,7 +61,9 @@ class AccountPage extends Component {
   }
   _submitBet = async (payload) => {
     var date = moment.utc()
+    var date_test = moment()
     var starttime = moment(payload.start, moment.ISO_8601);
+    console.log(date_test + " " + payload.start)
     console.log(date + '   ' + starttime)
     var hasGameStarted = (date - starttime)
     console.log(hasGameStarted)
@@ -78,8 +80,8 @@ class AccountPage extends Component {
     var date = moment.utc()
     const dateToFormat = date.format('LLLL')
     date.tz('America/Chicago').format('ha z')
+    var offset = new Date().getTimezoneOffset()
     if (!localStorage['access-token']) {
-      console.log('Redirect')
       return (<Redirect to='/' />)
     }
     const searchResults = this.state.searchResults.map((result, i) => {

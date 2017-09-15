@@ -31,11 +31,7 @@ class Api::BooksController < ApplicationController
     @time = Time.now.utc
 
     @openbets.each do |bet|
-      puts @time.to_i
-      puts bet.start.to_i
       next unless @time.to_i > bet.start.to_i
-      puts'DOESNT WORK'
-      puts bet[:spread]
       res = Bet.find_bet(bet[:gameID])
       res = res[0]
 
@@ -65,6 +61,7 @@ class Api::BooksController < ApplicationController
               puts 'loss 1'
             else
               bet[:win] = 'draw'
+              puts 'draw 1'
             end
           elsif bet[:spread] > 0
             if (res["HomeScore"].to_i + bet[:spread]) > res["AwayScore"].to_i
@@ -75,6 +72,7 @@ class Api::BooksController < ApplicationController
               puts 'loss 2'
             else
               bet[:win] = 'draw'
+              puts 'draw 2'
             end
           else
             if res["HomeScore"].to_i > res["AwayScore"].to_i
@@ -95,6 +93,7 @@ class Api::BooksController < ApplicationController
               puts 'loss 4'
             else
               bet[:win] = 'draw'
+              puts 'draw 3'
             end
           elsif bet[:spread] > 0
             if (res["AwayScore"].to_i + bet[:spread]) > res["HomeScore"].to_i
@@ -105,6 +104,7 @@ class Api::BooksController < ApplicationController
               puts 'loss 5'
             else
               bet[:win] = 'draw'
+              puts 'draw 4'
             end
           else
             if res["AwayScore"].to_i > res["HomeScore"].to_i

@@ -15,6 +15,8 @@ h5 {
 img {
   height: 10vh;
   width: 10vh;
+  min-width: 60px;
+  min-height: 60px;
   margin: 15px;
   margin-top: 2px;
   box-shadow: 5px 5px 5px #888888;
